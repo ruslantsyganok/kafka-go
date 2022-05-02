@@ -6,21 +6,21 @@ import (
 	kafkago "github.com/segmentio/kafka-go"
 )
 
-type KafkaWriter struct {
+type Writer struct {
 	Writer *kafkago.Writer
 }
 
-func NewKafkaWriter() *KafkaWriter {
+func NewKafkaWriter() *Writer {
 	writer := &kafkago.Writer{
 		Addr:  kafkago.TCP("localhost:9092"),
 		Topic: "user_full_info",
 	}
-	return &KafkaWriter{
+	return &Writer{
 		Writer: writer,
 	}
 }
 
-func (k *KafkaWriter) WriteMessages(ctx context.Context, messages chan kafkago.Message, messageCommitChan chan kafkago.Message) error {
+func (k *Writer) WriteMessages(ctx context.Context, messages chan kafkago.Message, messageCommitChan chan kafkago.Message) error {
 	for {
 		select {
 		case <-ctx.Done():
