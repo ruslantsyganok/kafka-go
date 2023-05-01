@@ -4,9 +4,10 @@ import (
 	"context"
 	"log"
 
+	"kafka-go/kafka"
+
 	kafkago "github.com/segmentio/kafka-go"
 	"golang.org/x/sync/errgroup"
-	"kafka-go/kafka"
 )
 
 func main() {
